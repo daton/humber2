@@ -53,4 +53,23 @@ public class ModeloOii {
 
         return algo;
     }
+
+    public XSSFSheet obtenerHoja(String archivo, int hoja)throws Exception{
+
+
+        FileInputStream fileIn = null;
+        FileOutputStream fileOut = null;
+
+
+
+        URL loadedResource = this.getClass().getClassLoader().getResource(archivo);
+        InputStream inputStream = loadedResource.openStream();
+
+
+        XSSFWorkbook wb = new XSSFWorkbook(inputStream);
+
+        XSSFSheet sheet = wb.getSheetAt(0);
+
+        return sheet;
+    }
 }
