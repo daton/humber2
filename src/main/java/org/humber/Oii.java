@@ -17,6 +17,17 @@ public class Oii {
 
     Float bas_extraprima;
 
+    @Override
+    public String toString() {
+        return "Oii{" +
+                "clave='" + clave + '\'' +
+                ", padecimiento='" + padecimiento + '\'' +
+                ", bas_tiempo=" + bas_tiempo +
+                ", accion='" + accion + '\'' +
+                ", bas_extraprima=" + bas_extraprima +
+                '}';
+    }
+
     public Oii(String clave, String padecimiento, Integer bas_tiempo, String accion, Float bas_extraprima) {
         this.clave = clave;
         this.padecimiento = padecimiento;
