@@ -56,8 +56,15 @@ public class ControladorConsulta {
         System.out.println("El nombre de archivaldo es:" + nombre + " el tamaño del archivo esta:" + tamano + " se guardo como: " + prefijo + nombre);
 
      ModeloConsultaAnalisis analisis=new ModeloConsultaAnalisis();
-        XSSFSheet hoja=   analisis.analisis1(inputStream,0);
-        System.out.println("Numero de registros "+hoja.getLastRowNum());
+     //Primero cargamos el archivo
+    analisis.cargarArchivo(inputStream,0);
+    //Hacemos un analisis
+        analisis.analisis1();
+
+
+
+
+
 
         Map map = new HashMap();
         map.put("success", true);
