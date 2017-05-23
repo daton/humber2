@@ -22,6 +22,7 @@ public class ModeloConsultaAnalisis {
     ArrayList<ConsultaOii> consulta;
     ArrayList<Organizados> grupos;
 
+    Arreglo elementos[];
 
     public void cargarArchivo(InputStream inputStream, int hoja) throws Exception {
 
@@ -33,7 +34,7 @@ public class ModeloConsultaAnalisis {
 
     }
 
-    public void analisis1() {
+    public Arreglo[] analisis1() {
         grupos = new ArrayList<Organizados>();
         consulta = new ArrayList<>();
 
@@ -67,7 +68,7 @@ public class ModeloConsultaAnalisis {
         for (ConsultaOii oii : consulta) {
             generado.add(oii.getNosecuenc());
         }
-        Arreglo[] elementos = new Arreglo[generado.size()];
+        elementos = new Arreglo[generado.size()];
         System.out.println("TODOSSSS" + generado.size());
         int i = 0;
         int indiceTama = 0;
@@ -95,6 +96,6 @@ public class ModeloConsultaAnalisis {
 
         }
 
-
+        return elementos;
     }
 }

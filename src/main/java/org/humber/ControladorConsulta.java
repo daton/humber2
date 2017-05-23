@@ -59,7 +59,7 @@ public class ControladorConsulta {
      //Primero cargamos el archivo
     analisis.cargarArchivo(inputStream,0);
     //Hacemos un analisis
-        analisis.analisis1();
+     Arreglo[]elementos=   analisis.analisis1();
 
 
 
@@ -113,4 +113,6 @@ public class ControladorConsulta {
         ObjectMapper maper2=new ObjectMapper();
          */
     }
+
+
 }
