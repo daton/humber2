@@ -84,7 +84,7 @@ public class ModeloConsultaAnalisis {
         //Este algoritmo es muy bonito simple y hermoso!! (jejejeje, que sencishiiitooo me vi) veamos como se ve el JSON !!!!!!!
 
         for (ConsultaOii oii : consulta) {
-            // elementos[oii.getNosecuenc()].getOii().add(new ConsultaOii());
+
             for (Arreglo a : elementos) {
                 int valor = a.getValor();
                 if (valor == oii.getNosecuenc()) a.getOii().add(oii);
