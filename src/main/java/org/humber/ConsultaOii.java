@@ -18,22 +18,6 @@ public class ConsultaOii {
   String desc_oii;
   String accion;
 
-    public ConsultaOii(Integer nosecuenc, String paterno, String materno, String nombre, LocalDate fec_nac, Integer edad, LocalDate fecha_impe, String claveoii, String desc_oii) {
-        this.nosecuenc = nosecuenc;
-        this.paterno = paterno;
-        this.materno = materno;
-        this.nombre = nombre;
-        this.fec_nac = fec_nac;
-        this.edad = edad;
-        this.fecha_impe = fecha_impe;
-        this.claveoii = claveoii;
-        this.desc_oii = desc_oii;
-    }
-
-    public ConsultaOii() {
-
-    }
-
     @Override
     public String toString() {
         return "ConsultaOii{" +
@@ -48,6 +32,22 @@ public class ConsultaOii {
                 ", desc_oii='" + desc_oii + '\'' +
                 ", accion='" + accion + '\'' +
                 '}';
+    }
+
+    public ConsultaOii(Integer nosecuenc, String paterno, String materno, String nombre, LocalDate fec_nac, Integer edad, LocalDate fecha_impe, String claveoii, String desc_oii) {
+        this.nosecuenc = nosecuenc;
+        this.paterno = paterno;
+        this.materno = materno;
+        this.nombre = nombre;
+        this.fec_nac = fec_nac;
+        this.edad = edad;
+        this.fecha_impe = fecha_impe;
+        this.claveoii = claveoii;
+        this.desc_oii = desc_oii;
+    }
+
+    public ConsultaOii() {
+
     }
 
     public ConsultaOii(Integer nosecuenc, String paterno, String materno, String nombre, LocalDate fec_nac, Integer edad, LocalDate fecha_impe, String claveoii, String desc_oii, String accion) {

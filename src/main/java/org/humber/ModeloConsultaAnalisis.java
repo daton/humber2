@@ -34,8 +34,8 @@ public class ModeloConsultaAnalisis {
     }
 
     public void analisis1() {
-        grupos=new ArrayList<Organizados>();
-        consulta=new ArrayList<>();
+        grupos = new ArrayList<Organizados>();
+        consulta = new ArrayList<>();
 
         int registros = sheet.getLastRowNum();
         System.out.println("NUMERO DE REGISTROS " + registros);
@@ -58,20 +58,43 @@ public class ModeloConsultaAnalisis {
             String descoii = row.getCell(8).getStringCellValue();
 
 
-        consulta.add(new ConsultaOii(nosec,paterno,materno,nombre,fec_nac,edad,fec_impe,claveoii,descoii));
-
+            consulta.add(new ConsultaOii(nosec, paterno, materno, nombre, fec_nac, edad, fec_impe, claveoii, descoii));
 
 
         }
 
-        Set<Integer> generado=new LinkedHashSet<>();
-        for(ConsultaOii oii:consulta){
+        Set<Integer> generado = new LinkedHashSet<>();
+        for (ConsultaOii oii : consulta) {
             generado.add(oii.getNosecuenc());
         }
+        Arreglo[] elementos = new Arreglo[generado.size()];
+        System.out.println("TODOSSSS" + generado.size());
+        int i = 0;
+        int indiceTama = 0;
+        for (Integer valor : generado) {
+            System.out.println("valor  " + valor);
+            elementos[i] = new Arreglo();
+            elementos[i].setValor(valor);
+            elementos[i].setOii(new ArrayList<>());
+            i++;
 
-        System.out.println("TODOSSSS" +generado.size());
-        for(Integer valor:generado){
-            System.out.println("valor  "+valor);
+
         }
+        //Este algoritmo es muy bonito simple y hermoso!! (jejejeje, que sencishiiitooo me vi) veamos como se ve el JSON !!!!!!!
+
+        for (ConsultaOii oii : consulta) {
+            // elementos[oii.getNosecuenc()].getOii().add(new ConsultaOii());
+            for (Arreglo a : elementos) {
+                int valor = a.getValor();
+                if (valor == oii.getNosecuenc()) a.getOii().add(oii);
+            }
+        }
+
+        for (Arreglo a : elementos) {
+            System.out.println(a);
+
+        }
+
+
     }
 }
