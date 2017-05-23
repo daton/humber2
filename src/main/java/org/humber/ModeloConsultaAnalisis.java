@@ -45,7 +45,7 @@ public class ModeloConsultaAnalisis {
         //La siguiente variable es el numero de casos para cada uno de los registros
         int numeroCasos = 0;
         System.out.println("NUMERO DE SEC INICIAL:" + nosecInicial);
-        for (int i = 0; i <= registros; i++) {
+        for (int i = 1; i <= registros; i++) {
             XSSFRow row = sheet.getRow(i);
             int nosec = (int) row.getCell(0).getNumericCellValue();
             String paterno = row.getCell(1).getStringCellValue();
@@ -92,9 +92,17 @@ public class ModeloConsultaAnalisis {
         }
 
         for (Arreglo a : elementos) {
-            System.out.println(a);
+
+            if(a.getValor()==20){
+                for(ConsultaOii oii:a.getOii()){
+                    System.out.println(oii);
+                }
+            }
+
 
         }
+
+
 
         return elementos;
     }
