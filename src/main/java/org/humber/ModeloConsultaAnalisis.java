@@ -4,6 +4,11 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,6 +21,8 @@ import java.util.Set;
 /**
  * Created by campitos on 17/05/17.
  */
+
+
 public class ModeloConsultaAnalisis {
     XSSFWorkbook wb;
     XSSFSheet sheet;
@@ -23,6 +30,19 @@ public class ModeloConsultaAnalisis {
     ArrayList<Organizados> grupos;
 
     Arreglo elementos[];
+
+    @Autowired RepositorioOii repo;
+
+
+    /**
+     * Este método recibe el archivo y se usa en el {@link ControladorConsulta} . Su función es
+     *  trasnsformarlo a un objeto de tipo {@link XSSFWorkbook} para ser analizado por el método
+     *  análisis1()
+     *
+     * @param inputStream El stream del archivo
+     * @param hoja el numero de la hoja que es la primera es decir la cero
+     * @throws Exception Una excepcion
+     */
 
     public void cargarArchivo(InputStream inputStream, int hoja) throws Exception {
 
@@ -39,7 +59,8 @@ public class ModeloConsultaAnalisis {
         consulta = new ArrayList<>();
 
         int registros = sheet.getLastRowNum();
-        System.out.println("NUMERO DE REGISTROS " + registros);
+
+        System.out.println("NUMERO DE REGISTROS del excel cargado: " + registros);
         int nosecInicial = (int) sheet.getRow(1).getCell(0).getNumericCellValue();
 
         //La siguiente variable es el numero de casos para cada uno de los registros
@@ -73,7 +94,7 @@ public class ModeloConsultaAnalisis {
         int i = 0;
         int indiceTama = 0;
         for (Integer valor : generado) {
-            System.out.println("valor  " + valor);
+            System.out.println("Valor del grupos:  " + valor);
             elementos[i] = new Arreglo();
             elementos[i].setValor(valor);
             elementos[i].setOii(new ArrayList<>());
@@ -82,7 +103,8 @@ public class ModeloConsultaAnalisis {
 
         }
         /**********************************************************************************************************
-        //Este algoritmo es muy bonito simple y hermoso!! (jejejeje, que sencishiiitooo me vi) veamos como se ve el JSON !!!!!!!
+        //Este algoritmo es muy bonito simple y hermoso!!
+         ( jejejeje, que sencishiiitooo me vi) veamos como se ve el JSON !!!!!!!
         /************************************************************************************/
         for (ConsultaOii oii : consulta) {
 
@@ -93,7 +115,12 @@ public class ModeloConsultaAnalisis {
         }
 
 
-        //ADIOOOOOOSSSSSSSSSSSSSSSSS
+
+        //Aqui seleccionamos el grupo cuyo Num_sec =20 para ver si esta bien
+        //En el objeto Arreglo a se guardan todos los grupos, para acceder a cada uno del
+        // Arreglo a obtenemos la propiedad a.getOii(); el cual por cada elemenrto del arreglo nos da
+        //un ArrayList<ConsultaOii>
+
 
         for (Arreglo a : elementos) {
 
@@ -110,4 +137,6 @@ public class ModeloConsultaAnalisis {
 
         return elementos;
     }
+
+
 }

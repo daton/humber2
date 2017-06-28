@@ -19,7 +19,7 @@ public class Modelo {
         if(indice==0)accion="aceptar";
         if(indice==1)accion="revision";
         if(indice==2)accion="sin beneficio";
-        if(indice==3)accion="aceptar";
+        if(indice==3)accion="rechazo";
         return accion;
     }
 

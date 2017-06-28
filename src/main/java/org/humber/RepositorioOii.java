@@ -11,4 +11,5 @@ import java.util.List;
 public interface RepositorioOii extends MongoRepository<Oii,String>{
 
     List<Oii> findByPadecimiento(String padecimiento);
+    Oii findByClave(String clave);
 }
