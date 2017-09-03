@@ -15,20 +15,20 @@ public class Humber2Application implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		ModeloOii modeloOii=new ModeloOii();
+		ModeloOii modeloOii = new ModeloOii();
 		//System.out.println(modeloOii.leer());
 /*
-		XSSFSheet hoja= modeloOii.obtenerHoja("oii2016tiempo.xlsx",0);
-		int ultimaFila=hoja.getLastRowNum();
-		System.out.println("Numero de filas "+ultimaFila);
-		for(int i=1;i<=ultimaFila;i++){
-			String padecimiento=hoja.getRow(i).getCell(0).getStringCellValue();
-			String clave=hoja.getRow(i).getCell(1).getStringCellValue();
-			Integer bas_tiempo=(int)(hoja.getRow(i).getCell(2).getNumericCellValue());
-			String accion=hoja.getRow(i).getCell(3).getStringCellValue();
-			Float bas_extraprima=(float)(hoja.getRow(i).getCell(4).getNumericCellValue());
+		XSSFSheet hoja = modeloOii.obtenerHoja("oii2016tiempo.xlsx", 0);
+		int ultimaFila = hoja.getLastRowNum();
+		System.out.println("Numero de filas " + ultimaFila);
+		for (int i = 1; i <= ultimaFila; i++) {
+			String padecimiento = hoja.getRow(i).getCell(0).getStringCellValue();
+			String clave = hoja.getRow(i).getCell(1).getStringCellValue();
+			Integer bas_tiempo = (int) (hoja.getRow(i).getCell(2).getNumericCellValue());
+			String accion = hoja.getRow(i).getCell(3).getStringCellValue();
+			Float bas_extraprima = (float) (hoja.getRow(i).getCell(4).getNumericCellValue());
 
-			Oii oii=new Oii(clave,padecimiento,  bas_tiempo,  accion, bas_extraprima);
+			Oii oii = new Oii(clave, padecimiento, bas_tiempo, accion, bas_extraprima);
 			repo.save(oii);
 
 			/*
@@ -43,13 +43,14 @@ public class Humber2Application implements CommandLineRunner{
 				System.out.println(oii);
 			}
 
-			*/
+
            Oii oii=     repo.findOne("C6200");
 
+*/
 
-
-		System.out.println("Accion :  "+oii.getAccion()+", estado :  "+oii);
+			//System.out.println("Accion :  "+oii.getAccion()+", estado :  "+oii);
 		}
-
 	}
+
+
 
