@@ -72,13 +72,16 @@ public class ControladorConsulta {
         String fileName = null;
         InputStream inputStream = null;
         OutputStream outputStream = null;
+        String extencion="";
         if (file.getSize() > 0) {
             inputStream = file.getInputStream();
 
 
             String contenido=  file.getContentType();
             int punto=nombre.indexOf(".");
+
             String nombreSolo=nombre.substring(0, punto);
+            extencion=nombre.substring(punto+1,nombre.length());
             prefijo="dia"+dia+"segundo"+segundo;
             //   System.out.println("nombre de archivo:"+fileName);
             //Guardamos imagen, si es que hay
@@ -86,16 +89,26 @@ public class ControladorConsulta {
 
 
         }
-        System.out.println("El nombre de archivaldo es:" + nombre + " el tamaño del archivo esta:" + tamano + " se guardo como: " + prefijo + nombre);
+        System.out.println("El nombre de archivaldo es:" + nombre + " el tamaño del archivo esta:" + tamano + " su extencion es:"+extencion);
 
      ModeloConsultaAnalisis analisis=new ModeloConsultaAnalisis();
      /*
      Primero cargamos el archivo, este metodo de cargarArchivo  y aplicamos el análisis1(9 el cual consta de:
 
       */
-    analisis.cargarArchivo(inputStream,0);
+   //
+        if(extencion.equals("xlsx")){
+            analisis.cargarArchivo(inputStream,0);
+            elementos=   analisis.analisis1();
+        }
+        if(extencion.equals("xls")){
+            analisis.cargarArchivoViejo(inputStream,0);
+            elementos=analisis.analisis1Viejo();
+        }
+
+
     //Hacemos un analisis1()
-     elementos=   analisis.analisis1();
+
      //Despues obtenemos el dictamen
       dictamen=          obtenerDictamen(elementos);
         System.out.println("Elementoss encontrados:"+dictamen.size());
@@ -119,7 +132,8 @@ Este Arreglo[] es muy importante, el numero de elementos es igual a los distinto
         Map map = new HashMap();
         map.put("success", true);
         ObjectMapper maper2=new ObjectMapper();
-        return maper2.writeValueAsString(map);
+        return maper2.writeValueAsString(dictamen);
+
 
     }
 
