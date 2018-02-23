@@ -74,7 +74,7 @@ public class ControladorConsulta {
         OutputStream outputStream = null;
         String extencion="";
         if (file.getSize() > 0) {
-            inputStream = file.getInputStream();
+            inputStream = file.getInputStream();//Probando
 
 
             String contenido=  file.getContentType();
